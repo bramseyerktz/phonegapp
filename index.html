@@ -1,0 +1,89 @@
+<html>
+<head>
+    <title>Fichajes</title>
+    <link rel="stylesheet" href="css/index.css"  />
+    <link rel='stylesheet' href='css/bootstrap.min.css' />
+    <script src="jquery/jquery-2.0.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="cordova.js"></script>
+</head>
+
+<body>
+    <div class="page-header">
+        <ul class="pager">
+            <h1><small>Fichajes</small></h1>
+        </ul>
+    </div>
+    <div id="popup">
+        <div class="container" id="form">
+            <div class="form">
+                <a href="#" id="btnIrAUrl" class="btn btn-success btn-block">Ir a Fichajes</a>
+                <button id="btnAlarma" type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#modalTimePicker">
+                    Alarma
+                </button>
+                <br><br>
+                <div class="form-group">
+                    <label for="user">User</label>
+                    <input type="text" id="user" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="pass" class="form-control" placeholder="Password" style="display: none;">
+                </div>
+                <input id="btnConsulta" type="button" value="Consulta" class="btn btn-default btn-block" style="display: none;">
+                <input id="btnChangeUser" type="button" value="Change user" class="btn btn-default btn-block" style="display: none;">
+                <br><br>
+                <input id="btnEntrada" type="button" value="Entrada" class="btn btn-primary btn-block" style="display: none;">
+                <input id="btnSalida" type="button" value="Salida" class="btn btn-danger btn-block" style="display: none;">
+                <div class="spinner" id="gifLoading">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <p id="userInvalid" style="display: none;">User Invalid!!!</p>
+                <p id="tooFast" style="display: none;">Take it easy boy. Too fast!</p>
+                <div id="divSalida"></div>
+            </div>
+            <br>
+            <div class="container" id="formCalcular" style="display: none;">
+                <legend>Tiempo a trabajar</legend>
+                <form class="form form-inline">
+                    <div class="form-group">
+                        <label for="horaJornada">Horas</label>
+                        <input type="number" min="1" max="14" id="horaJornada" class="form-control" placeholder="Horas" value="8">
+                    </div>
+                    <div class="form-group">
+                        <label for="minutoJornada" class="col-xs-4">Minutos</label>
+                        <input type="number" min="0" max="59" id="minutoJornada" class="form-control" placeholder="Minutos" value="18">
+                    </div>
+                    <div class="form-group">
+                        <input id="btnJornada" type="button" value="Calcular" class="btn btn-default btn-block">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="oculto" style="display: none"></div>
+
+    <!-- Popup for Alarm -->
+    <div class="modal fade" id="modalTimePicker" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Alarm</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="minutoAlarma">Minutos</label>
+                    <input type="number" min="1" max="60" id="minutoAlarma" class="form-control" placeholder="Minutos">
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancelAlarm" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button id="btnSetAlarm" type="button" class="btn btn-success">Set Alarm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/popup.js"></script>
+</body>
+</html>

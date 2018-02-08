@@ -1,0 +1,49 @@
+/**
+ * Created by bramseyer on 17/03/16.
+ */
+//Executes when click on the trollface icon.
+
+//var ajaxFichajes = new XMLHttpRequest();
+
+prepareForm();
+
+function prepareForm(){
+    $("#btnEntrada").hide();
+    $("#btnSalida").hide();
+    $("#gifLoading").hide();
+}
+
+//ajaxFichajes.onreadystatechange = function() {
+function showCorrectButton(){
+    var url = 'http://controlhoras.kinexo.com/Fichajes/ListaFichajes/?username='  + $("#user").val();
+    $("#btnConsulta").hide();
+    $("#gifLoading").show();
+
+    $.ajax({
+            url: url,
+            datatype: 'html'
+        })
+        .done(function (data){
+            //var btnFichar = data.getElementsByName('Fichar');
+	            //if (btnFichar.value == 'Fichar Salida') {
+	   var esEntrada = true;
+	   if(data.indexOf('value="Fichar Salida"') != -1)
+    		esEntrada = false;
+
+            if (!esEntrada) {
+                $("#gifLoading").hide();
+                $("#btnEntrada").hide();
+                $("#btnSalida").show();
+            } else {
+                $("#gifLoading").hide();
+                $("#btnSalida").hide();
+                $("#btnEntrada").show();
+            }
+        });
+}
+
+//$(document).ready(function () {
+    $('#btnConsulta').click(function(){
+        showCorrectButton();
+    });
+//});
